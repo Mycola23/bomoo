@@ -1,9 +1,7 @@
-# amazon_site
+# bomoo__projects
 
-It`s small copy of real amazon site with basic functionality
+It`s star of future app ecosystem for users
 
-Add lazy loading
 
-wotk calcular that calc sum of ordery
 
-2023 -2024 support
+2024 -2025 support
