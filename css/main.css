@@ -85,6 +85,7 @@ h6 {
 body {
   font-family: "Quicksand", sans-serif;
   font-size: 1rem;
+  background: #9fa2a7;
 }
 
 .wrapper {
@@ -93,9 +94,35 @@ body {
   min-height: 100vh;
 }
 
-[class*=main__container] {
+[class*=__container] {
   padding-left: calc(15px + 25 * calc(100vw - (320px)) / 1120);
   padding-right: calc(15px + 25 * calc(100vw - (320px)) / 1120);
+}
+
+.main__container {
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 350px;
+  background-color: #ff2222;
+  padding: 10px 15px;
+  border-radius: 50% 25%;
+  box-shadow: 20px -8px 13px rgba(255, 34, 34, 0.6588235294), -16px 16px 15px 5px rgba(255, 34, 34, 0.6509803922), -1px -8px 12px rgba(255, 34, 34, 0.5490196078);
+  margin-bottom: 55px;
+}
+.main__btn svg {
+  color: white;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* containers
