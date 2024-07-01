@@ -1,0 +1,85 @@
+@import "_nullstyle";
+
+//under development
+// promixes ------
+$fontFamily: "Quicksand", sans-serif;
+//$font-family: Amazon Ember; //!
+$fontSize: 1rem;
+
+$mainColor: #6a6e77;
+$darkColor: #1c1f25;
+
+$minWidth: 320;
+$maxWidth: 1440;
+$maxHeigth: 1080;
+$containerPadding: 480;
+
+$maxWidthContainer: 0;
+
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+$pc: em($containerWidth);
+
+$resposiveType: 1;
+
+//$f: math.div(230,3);
+//@debug $f;
+@mixin math($math, $startvalue, $secondvalue) {
+    #{$math}: ($startvalue / $secondvalue) + "px";
+}
+
+@mixin adaptive-value($property, $minSize, $maxSize, $min-screen, $max-screen) {
+    $addsize: $maxSize - $minSize;
+    $screen-width: $max-screen - $min-screen;
+    $screen-range: calc(
+        100vw - (#{$min-screen + "px"})
+    ); //* it works only when i`ve added calc fuction to $screen-range
+    $valueSize: calc(
+        #{$minSize + px} + #{$addsize} * #{$screen-range} / #{$screen-width}
+    ); //* complete todo you need to complete problem with this mixin to no have problems in the future
+    #{$property}: $valueSize;
+}
+
+// Don`t forgot cascadeee ------
+
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+[class*="main__container"] {
+    @include adaptive-value(padding-left, 15, 40, $minWidth, $maxWidth);
+    @include adaptive-value(padding-right, 15, 40, $minWidth, $maxWidth);
+}
+
+/* containers
+[class*="__container"]{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+@media(max-width: 1199.98px){
+    [class*="__container"]{
+        max-width: 970px;
+    }
+}
+
+@media(max-width: 990.98px){
+    [class*="__container"]{
+        max-width: 750px;
+    }
+}
+
+@media(max-width: 767.98px){
+    [class*="__container"]{
+        max-width: 650px;
+    }
+}*/
