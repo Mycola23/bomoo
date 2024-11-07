@@ -1,0 +1,138 @@
+//todo додати  елмент before до main щоб розділити нашу сторінку на дві частинки перша запис друга прослуховування його
+//todo відповідно підібрати кольори і сам стиль менюшки + подумати над бкграундом для запису і всього застосунку
+.header {
+    margin-bottom: 15px;
+}
+// shift + alt +a to comment code
+.main {
+    &__container {
+    }
+
+    &__title {
+        margin-bottom: 55px;
+    }
+    &__record-box {
+        width: 100%;
+    }
+}
+.record-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding-top: 35px;
+    &__record-btn {
+        display: flex;
+        position: relative;
+        //filter: blur(1.5px);
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 300px;
+        background-color: #ff2222;
+        padding: 10px 15px;
+        border-radius: 50% 25%;
+        box-shadow:
+            20px -8px 40px #ff22221c,
+            -16px 16px 40px 5px #ff222239,
+            -1px -8px 40px #ff222241;
+        margin-bottom: 55px;
+        svg {
+            position: relative;
+            z-index: 100;
+            filter: blur(0.5px);
+            color: white;
+            max-width: 100%;
+            //width: 50px;
+            max-height: 100%;
+            transition: all 0.2s ease-in-out 0s;
+        }
+    }
+    &__record-btn::after,
+    &__record-btn::before {
+        --pad: 0rem;
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 0;
+        background-color: #ff222265;
+
+        top: var(--pad);
+        bottom: var(--pad);
+        left: var(--pad);
+        right: var(--pad);
+        border-radius: 50% 25%;
+    }
+    &__record-btn::after {
+        transition: all 0.4s ease-in-out 0s;
+    }
+    &__record-btn::before {
+        transition: all 0.2s ease-in-out 0s;
+    }
+
+    // for hover
+    &__record-btn:hover::before {
+        --pad: -1rem;
+    }
+    &__record-btn:hover::after {
+        --pad: -2rem;
+    }
+    // for animation
+    &__record-btn.is-recording::after {
+        animation: smoothPadAfter 0.5s alternate-reverse forwards infinite;
+    }
+    &__record-btn.is-recording::before {
+        animation: smoothPadBefore 0.5s alternate-reverse forwards infinite;
+    }
+    &__record-btn.is-recording {
+        svg {
+            animation: smoothIcon 0.5s alternate-reverse forwards infinite;
+            animation-timing-function: ease-in-out;
+        }
+    }
+
+    &__playback {
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        border-radius: 25px;
+    }
+}
+
+@keyframes smoothPadAfter {
+    0% {
+        top: -2.5rem;
+        bottom: -2.5rem;
+        left: -2.5rem;
+        right: -2.5rem;
+    }
+    100% {
+        top: -1rem;
+        bottom: -1rem;
+        left: -1rem;
+        right: -1rem;
+    }
+}
+
+@keyframes smoothPadBefore {
+    0% {
+        top: -1.5rem;
+        bottom: -1.5rem;
+        left: -1.5rem;
+        right: -1.5rem;
+    }
+    100% {
+        top: -0.5rem;
+        bottom: -0.5rem;
+        left: -0.5rem;
+        right: -0.5rem;
+    }
+}
+@keyframes smoothIcon {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 85%;
+    }
+}

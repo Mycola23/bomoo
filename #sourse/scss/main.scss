@@ -1,4 +1,5 @@
 @import "_nullstyle";
+@import "_voice_record.scss";
 
 //under development
 // promixes ------
@@ -45,7 +46,9 @@ $resposiveType: 1;
 body {
     font-family: $fontFamily;
     font-size: $fontSize;
-    background: #9fa2a7;
+    //background: #353535e0;
+    //background: rgb(79, 79, 79);
+    background: #295562; // maybe sa variant of background color
 }
 
 .wrapper {
@@ -55,37 +58,378 @@ body {
 }
 
 [class*="__container"] {
-    @include adaptive-value(padding-left, 15, 40, $minWidth, $maxWidth);
-    @include adaptive-value(padding-right, 15, 40, $minWidth, $maxWidth);
+    // @include adaptive-value(padding-left, 15, 40, $minWidth, $maxWidth);
+    //@include adaptive-value(padding-right, 15, 40, $minWidth, $maxWidth);
 }
-
-.main__container {
-    padding-top: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.main__btn {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    height: 350px;
-    background-color: #ff2222;
-    padding: 10px 15px;
-    border-radius: 50% 25%;
-    box-shadow: 20px -8px 13px #ff2222a8, -16px 16px 15px 5px #ff2222a6, -1px -8px 12px #ff22228c;
-    margin-bottom: 55px;
-    svg {
-        color: white;
-        max-width: 100%;
-        //width: 50px;
-        max-height: 100%;
+.header {
+    flex: 0 1 60px;
+    margin-bottom: 15px;
+    &__menu {
+        //display: none;
+        background: #262626;
+    }
+    img {
+        width: 100%;
+        height: 30px;
     }
 }
 
+//------------------------------------------
+.main {
+    flex: 1 1 auto;
+    //margin-bottom: 25px;
+    &__container {
+        //height: 100vh;
+    }
+    &__title {
+        @include adaptive-value(font-size, 40, 75, $minWidth, $maxWidth);
+        color: #e9e5d9;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    &__menu {
+        background: #295562;
+        height: 100%;
+    }
+}
+
+// todo when we click on one item of our menu we`ll see smooth transformation with transition on appearing img => go to another page of my web-site
+// todo add background color only for titles and try make it like drop menu , but we need to hidden turning between display none and block
+// I just DID IT I`M  A GREAT for searching difficult solution
+.menu {
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(auto-fit, minmax(20px, 1fr));
+
+        //row-gap: 10px;
+    }
+
+    &__item {
+        cursor: pointer;
+        //padding: 0 5px;
+        .item__content {
+            background-color: #295562;
+        }
+    }
+
+    .item:nth-child(1) {
+        width: 62%;
+        .item__title {
+            background: #f86e52;
+        }
+    }
+    .item:nth-child(2) {
+        width: 72%;
+        .item__title {
+            background: #ffa451;
+        }
+    }
+    .item:nth-child(3) {
+        width: 82%;
+        .item__title {
+            background: #bdb1df;
+        }
+    }
+    .item:nth-child(4) {
+        width: 92%;
+        .item__title {
+            background: #9191f3;
+        }
+    }
+    .item:nth-child(5) {
+        .item__title {
+            background: #e9e5d9;
+        }
+    }
+
+    &__link {
+    }
+
+    &__img {
+        width: 100%;
+        object-fit: cover;
+        @include adaptive-value(height, 100, 300, $minWidth, $maxWidth);
+    }
+}
+.item {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        transition: all 0.7s ease;
+        position: relative;
+        display: flex;
+        align-items: center;
+        @include adaptive-value(padding-left, 15, 30, $minWidth, $maxWidth);
+        @include adaptive-value(padding-right, 15, 30, $minWidth, $maxWidth);
+        padding-top: 15px;
+        padding-bottom: 15px;
+        @include adaptive-value(margin-bottom, -100, -180, $minWidth, 767.777);
+        // for text
+        color: #295562;
+        @include adaptive-value(font-size, 18, 40, $minWidth, $maxWidth);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        //margin-bottom: -100px;
+        span {
+            margin-right: 15px;
+        }
+        a {
+            color: #295562;
+        }
+    }
+
+    &__content {
+        position: relative;
+        top: 0;
+        left: 0;
+        background-color: #295562;
+        @include adaptive-value(padding-left, 15, 20, $minWidth, $maxWidth);
+        @include adaptive-value(padding-right, 15, 20, $minWidth, $maxWidth);
+        transform: translateX(-200%) rotate(75deg);
+        opacity: 0;
+        transition:
+            transform 0.5s ease-in 0s,
+            opacity 0.8s ease-in,
+            background-color 0.4s ease;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            // display: none;
+        }
+
+        //background: #1c1f25;
+    }
+    &.__active {
+        //@include adaptive-value(margin-bottom, 15, 25, $minWidth, $maxWidth);
+        img {
+            // display: block;
+        }
+        .item__title {
+            margin-bottom: 0;
+        }
+        .item__content {
+            padding-top: 20px;
+            background-color: #ffd;
+            transform: translateX(0%);
+            opacity: 1;
+
+            padding-bottom: 20px;
+        }
+    }
+}
+
+//---------------------------------------
+
+.footer {
+    display: flex;
+    flex: 0 1 20%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #262626;
+    &__btn {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background: #3b3a3a;
+        padding: 15px 0;
+        line-height: 19px;
+        font-size: 14px;
+        @include adaptive-value(font-size, 16, 18, $minWidth, $maxWidth);
+        margin-bottom: 40px;
+    }
+    &__btn:hover {
+        background: #1d3d46;
+    }
+
+    &__content {
+        width: 100%;
+    }
+
+    &__items {
+        display: grid;
+        grid-template: 1fr / repeat(auto-fit, minmax(120px, 1fr));
+        column-gap: 80px;
+        margin-bottom: 40px;
+        @include adaptive-value(padding-left, 40, 80, $minWidth, $maxWidth);
+        @include adaptive-value(padding-right, 40, 80, $minWidth, $maxWidth);
+
+        // @include adaptive-value(column-gap, 10, 100, $minWidth, $maxWidth)
+    }
+
+    &__logo_box {
+        position: relative;
+        border-top: 1px solid #dddddd9f;
+        background: inherit;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 30px;
+        .footer__logo {
+            max-width: 200px;
+            text-align: center;
+            padding: 15px 5px;
+        }
+        a {
+            color: #e9e5d9;
+            @include adaptive-value(font-size, 45, 75, $minWidth, $maxWidth);
+        }
+    }
+
+    &__text {
+        text-align: center;
+        background-color: #222323;
+        padding: 30px 0 60px;
+        color: #fff;
+        line-height: 30px;
+        font-size: 16px;
+        span {
+            padding: 0 10px;
+        }
+    }
+    .item {
+        margin-bottom: 15px;
+        &__title {
+            text-align: center;
+            font-weight: 700;
+            color: #fff;
+            font-size: 18px;
+            line-height: 20px;
+            margin: 6px 0 14px 0;
+        }
+
+        &__links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            line-height: 20px;
+        }
+
+        &__link {
+            margin-bottom: 15px;
+            a {
+                color: #fff;
+                font-size: 14px;
+                line-height: 16px;
+            }
+        }
+
+        &__link:hover {
+            text-decoration: underline;
+        }
+    }
+}
+@media (min-width: 767.777px) {
+    .main {
+        &__container {
+            @include adaptive-value(padding-left, 15, 25, $minWidth, $maxWidth);
+            @include adaptive-value(padding-right, 15, 25, $minWidth, $maxWidth);
+        }
+    }
+    .menu {
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+            grid-template-rows: auto;
+            column-gap: 35px;
+            row-gap: 25px;
+            margin-bottom: 45px;
+            //row-gap: 10px;
+        }
+        .item {
+            position: relative;
+            z-index: 0;
+            min-width: 100%;
+            border-radius: 15px;
+            min-height: 150px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 11px 9px 35px 0px #000;
+            transition: all 0.3s ease-in;
+            padding: 0 10px;
+            background-color: currentcolor;
+
+            &__title {
+                text-align: center;
+                letter-spacing: 0.1em;
+                display: flex;
+                align-items: center;
+                padding: 15px 0;
+                gap: 10px;
+                margin-bottom: 0;
+                // for text
+                color: #295562;
+                @include adaptive-value(font-size, 18, 32, $minWidth, $maxWidth);
+                font-weight: 600;
+
+                span {
+                    margin-right: 0px;
+                }
+                a {
+                    color: #295562;
+                }
+            }
+
+            &__content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    display: none;
+                }
+
+                //background: #1c1f25;
+            }
+        }
+        .item::after {
+            //content: "";
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: #333;
+            border-radius: 15px;
+        }
+
+        .item.__active {
+            padding-bottom: 0;
+            .item__content {
+                display: none;
+            }
+        }
+        @media (hover: hover) {
+            .item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0px 21px 40px 2px rgb(103, 106, 106);
+            }
+        }
+        @media (hover: none) {
+        }
+        .item:nth-child(1) {
+            background: #f86e52;
+        }
+        .item:nth-child(2) {
+            background: #ffa451;
+        }
+        .item:nth-child(3) {
+            background: #bdb1df;
+        }
+        .item:nth-child(4) {
+            background: #9191f3;
+        }
+        .item:nth-child(5) {
+            background: #e9e5d9;
+        }
+    }
+}
 /* containers
 [class*="__container"]{
     max-width: 1200px;
