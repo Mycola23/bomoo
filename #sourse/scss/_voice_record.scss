@@ -1,9 +1,18 @@
 //todo додати  елмент before до main щоб розділити нашу сторінку на дві частинки перша запис друга прослуховування його
 //todo відповідно підібрати кольори і сам стиль менюшки + подумати над бкграундом для запису і всього застосунку
+//todo adaptive size of elements on page like voice icon and other
+$mainColor: #6a6e77;
+body {
+    // enough pretty for this page on tha moment
+}
+.wrapper-record {
+    background: #d47f7f;
+}
 .header {
     margin-bottom: 15px;
 }
 // shift + alt +a to comment code
+
 .main {
     &__container {
     }
@@ -31,7 +40,7 @@
         align-items: center;
         width: 200px;
         height: 300px;
-        background-color: #ff2222;
+        background-color: #ff2222; // #ea6133   first variant(#ff2222)
         padding: 10px 15px;
         border-radius: 50% 25%;
         box-shadow:
@@ -97,8 +106,99 @@
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
         border-radius: 25px;
     }
+    &__record-audio {
+        width: 350px;
+        height: 100px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.517);
+        box-shadow: 0 4px 45px rgb(0 0 0 / 28%);
+        padding: 30px;
+        padding-top: 25px;
+        overflow: hidden;
+        color: $mainColor;
+        margin-bottom: 45px;
+    }
 }
-
+.record-audio {
+    &__slider {
+        width: 100%;
+        position: relative;
+    }
+    &__seek-bar {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 10px;
+        border-radius: 10px;
+        background: #cf5656b5;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    &__seek-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 0px;
+        height: 10px;
+        border-radius: 50%;
+        background: #281111;
+        box-shadow: -400px 0 0 400px #d72222;
+    }
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    &__time-block {
+        display: flex;
+    }
+    &__current-time,
+    &__duration-time,
+    span {
+        font-size: 16px;
+    }
+}
+.record-controls {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    &__play-btn {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #d47f7f;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.4); //todo need find some good examplr with work with shadows
+        span {
+            position: absolute;
+            top: 50%;
+            left: 31%;
+            width: 5px;
+            height: 20px;
+            border-radius: 2px;
+            background: #d72222;
+            transition: 0.5s;
+            transform: translateY(-50%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        span:nth-child(2) {
+            left: 55%;
+            transform-origin: center;
+        }
+    }
+    &__play-btn.pause span:nth-child(2) {
+        transform: translateY(-50%) scaleY(0);
+    }
+    &__play-btn.pause span:nth-child(1) {
+        width: 35%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+        border-radius: 0;
+        clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
+    }
+}
 @keyframes smoothPadAfter {
     0% {
         top: -2.5rem;

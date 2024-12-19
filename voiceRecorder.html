@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
         <!-- change it on other-->
         <title>Bomoo</title>
         <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
-        <div class="wrapper">
+        <div class="wrapper wrapper-record">
             <!-- Header -->
             <header class="header">
                 <div class="header__container nav-header">
@@ -79,7 +79,25 @@
                                 </g>
                             </svg>
                         </button>
-                        <audio class="record-box__playback" controls></audio>
+                        <div class="record-box__record-audio record-audio">
+                            <div class="record-audio__top">
+                                <div class="record-audio__controls record-controls">
+                                    <button class="record-controls__play-btn">
+                                        <span></span>
+                                        <span></span>
+                                    </button>
+                                </div>
+                                <div class="record-audio__time-block">
+                                    <span class="record-audio__current-time">00:00 </span>
+                                    <span> / </span>
+                                    <span class="record-audio__duration-time"> 00:00</span>
+                                </div>
+                            </div>
+                            <div class="record-audio__slider">
+                                <input type="range" value="0" class="record-audio__seek-bar" />
+                            </div>
+                        </div>
+                        <audio class="record-box__playback"></audio>
                     </div>
                 </div>
             </main>

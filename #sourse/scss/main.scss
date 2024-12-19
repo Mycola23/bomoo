@@ -3,7 +3,7 @@
 
 //under development
 // promixes ------
-$fontFamily: "Quicksand", sans-serif;
+$fontFamily: "Playfair Display";
 //$font-family: Amazon Ember; //!
 $fontSize: 1rem;
 
@@ -46,9 +46,10 @@ $resposiveType: 1;
 body {
     font-family: $fontFamily;
     font-size: $fontSize;
+
     //background: #353535e0;
     //background: rgb(79, 79, 79);
-    background: #295562; // maybe sa variant of background color
+    background: #295562; // maybe sa variant of background color #295562
 }
 
 .wrapper {
@@ -171,7 +172,7 @@ body {
         // for text
         color: #295562;
         @include adaptive-value(font-size, 18, 40, $minWidth, $maxWidth);
-        font-weight: 600;
+        font-weight: 900;
         letter-spacing: 0.1em;
         //margin-bottom: -100px;
         span {
@@ -366,7 +367,6 @@ body {
                 // for text
                 color: #295562;
                 @include adaptive-value(font-size, 18, 32, $minWidth, $maxWidth);
-                font-weight: 600;
 
                 span {
                     margin-right: 0px;
@@ -457,3 +457,4 @@ body {
 }*/
 
 /* special text for fixing all */
+//* add fonts display fair
