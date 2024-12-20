@@ -1,45 +1,8 @@
 @import "_nullstyle";
 @import "_voice_record.scss";
-
+@import "_mixin";
 //under development
 // promixes ------
-$fontFamily: "Playfair Display";
-//$font-family: Amazon Ember; //!
-$fontSize: 1rem;
-
-$mainColor: #6a6e77;
-$darkColor: #1c1f25;
-
-$minWidth: 320;
-$maxWidth: 1440;
-$maxHeigth: 1080;
-$containerPadding: 480;
-
-$maxWidthContainer: 0;
-
-$containerWidth: $maxWidthContainer + $containerPadding;
-
-$pc: em($containerWidth);
-
-$resposiveType: 1;
-
-//$f: math.div(230,3);
-//@debug $f;
-@mixin math($math, $startvalue, $secondvalue) {
-    #{$math}: ($startvalue / $secondvalue) + "px";
-}
-
-@mixin adaptive-value($property, $minSize, $maxSize, $min-screen, $max-screen) {
-    $addsize: $maxSize - $minSize;
-    $screen-width: $max-screen - $min-screen;
-    $screen-range: calc(
-        100vw - (#{$min-screen + "px"})
-    ); //* it works only when i`ve added calc fuction to $screen-range
-    $valueSize: calc(
-        #{$minSize + px} + #{$addsize} * #{$screen-range} / #{$screen-width}
-    ); //* complete todo you need to complete problem with this mixin to no have problems in the future
-    #{$property}: $valueSize;
-}
 
 // Don`t forgot cascadeee ------
 
@@ -240,7 +203,7 @@ body {
         background: #3b3a3a;
         padding: 15px 0;
         line-height: 19px;
-        font-size: 14px;
+        //font-size: 14px;
         @include adaptive-value(font-size, 16, 18, $minWidth, $maxWidth);
         margin-bottom: 40px;
     }
@@ -271,7 +234,7 @@ body {
         justify-content: center;
         margin: 0 0 30px;
         .footer__logo {
-            max-width: 200px;
+            //max-width: 200px;
             text-align: center;
             padding: 15px 5px;
         }
@@ -287,7 +250,7 @@ body {
         padding: 30px 0 60px;
         color: #fff;
         line-height: 30px;
-        font-size: 16px;
+        //font-size: 16px;
         span {
             padding: 0 10px;
         }
@@ -458,3 +421,13 @@ body {
 
 /* special text for fixing all */
 //* add fonts display fair
+
+/*//? ineresting thing for using in (maybe) the future
+.block {
+box-shadow: 0 -8px 4px 0 rgba(0, 0, 0, .25) inset;
+border-radious: 32px;
+padding: 15px;
+//^ using for create effects of volumetric tiles for some content
+}
+
+*/

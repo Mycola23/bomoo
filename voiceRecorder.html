@@ -87,6 +87,10 @@
                                         <span></span>
                                     </button>
                                 </div>
+                                <div class="record-audio__volume">
+                                    <img src="img/icons/volume.svg" class="record-audio__volume-img" alt="" />
+                                    <input type="range" value="0" class="record-audio__seek-bar record-audio__volume-bar" />
+                                </div>
                                 <div class="record-audio__time-block">
                                     <span class="record-audio__current-time">00:00 </span>
                                     <span> / </span>
@@ -97,7 +101,7 @@
                                 <input type="range" value="0" class="record-audio__seek-bar" />
                             </div>
                         </div>
-                        <audio class="record-box__playback"></audio>
+                        <audio class="record-box__playback" controls></audio>
                     </div>
                 </div>
             </main>

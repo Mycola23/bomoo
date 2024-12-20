@@ -1,7 +1,8 @@
 "use strict";
 const recorBtn = document.querySelector(".record-box__record-btn");
 const playback = document.querySelector(".record-box__playback");
-
+const controlsBox = document.querySelector(".record-audio");
+const audio = document.querySelector(".record-box__playback");
 let can_record = false;
 let is_recording = false;
 
@@ -54,19 +55,55 @@ function toggleRecord() {
                 chunks = [];
                 const audioUrl = window.URL.createObjectURL(blob);
                 playback.src = audioUrl;
-                audioUrlForVoiceMenu = audioUrl;
+                audioUrlForVoiceMenu = window.URL.createObjectURL(blob);
 
                 //console.log(audioUrlForVoiceMenu);
                 resolve(audioUrlForVoiceMenu);
             };
         }).then((audioUrlForVoiceMenu) => {
-            CreateVoiceMenu(audioUrlForVoiceMenu);
+            ControlVoiceRecord(audioUrlForVoiceMenu);
             console.log("created voice menu ");
         });
     }
 }
 
-function CreateVoiceMenu(audioUrl) {
-    let HTML = "";
-    console.log(audioUrl); // we have our url of audio , now we can create menu for it
+function ControlVoiceRecord(audioUrl) {
+    // Set up the audio source
+    audio.src = audioUrl;
+    audio.load();
+
+    // Listen for button clicks
+    controlsBox.addEventListener("click", (e) => {
+        const target = e.target;
+
+        if (target.closest(".record-controls__play-btn")) {
+            // Toggle the play/pause state
+            if (audio.paused) {
+                audio.play();
+                target.classList.add("pause"); // Update button state
+                console.log("Audio playing...");
+            } else {
+                audio.pause();
+                target.classList.remove("pause"); // Update button state
+                console.log("Audio paused.");
+            }
+        }
+    });
+
+    // Sync button state with audio events
+    audio.addEventListener("play", () => {
+        const playBtn = document.querySelector(".record-controls__play-btn");
+        if (playBtn) playBtn.classList.add("pause");
+    });
+
+    audio.addEventListener("pause", () => {
+        const playBtn = document.querySelector(".record-controls__play-btn");
+        if (playBtn) playBtn.classList.remove("pause");
+    });
+
+    audio.addEventListener("ended", () => {
+        const playBtn = document.querySelector(".record-controls__play-btn");
+        if (playBtn) playBtn.classList.remove("pause");
+        console.log("Audio playback ended.");
+    });
 }

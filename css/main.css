@@ -105,6 +105,8 @@ h6 {
   margin-bottom: 15px;
   overflow: hidden;
   padding-top: 35px;
+  padding-left: calc(10px + 30 * calc(100vw - (320px)) / 1120);
+  padding-right: calc(10px + 30 * calc(100vw - (320px)) / 1120);
 }
 .record-box__record-btn {
   display: flex;
@@ -116,7 +118,7 @@ h6 {
   background-color: #ff2222;
   padding: 10px 15px;
   border-radius: 50% 25%;
-  box-shadow: 20px -8px 40px rgba(255, 34, 34, 0.1098039216), -16px 16px 40px 5px rgba(255, 34, 34, 0.2235294118), -1px -8px 40px rgba(255, 34, 34, 0.2549019608);
+  box-shadow: 20px -8px 40px rgba(224, 6, 6, 0.3), -16px 16px 40px 5px rgba(174, 0, 0, 0.42), -1px -8px 40px rgba(255, 34, 34, 0.3449019608);
   margin-bottom: 55px;
 }
 .record-box__record-btn svg {
@@ -168,12 +170,10 @@ h6 {
   border-radius: 25px;
 }
 .record-box__record-audio {
-  width: 350px;
-  height: 100px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.517);
   box-shadow: 0 4px 45px rgba(0, 0, 0, 0.28);
-  padding: 30px;
+  padding: 30px 30px 10px 30px;
   padding-top: 25px;
   overflow: hidden;
   color: #6a6e77;
@@ -212,7 +212,8 @@ h6 {
 }
 .record-audio__current-time, .record-audio__duration-time,
 .record-audio span {
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 36px;
 }
 
 .record-controls {
@@ -227,10 +228,11 @@ h6 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 2px solid #6a6e77;
   background: #d47f7f;
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.124), 0 0 7px 5px rgba(0, 0, 0, 0.124), 0 0 20px 5px rgba(0, 0, 0, 0.124), 0 0 20px 8px rgba(0, 0, 0, 0.124);
 }
 .record-controls__play-btn span {
   position: absolute;
@@ -259,6 +261,20 @@ h6 {
   border-radius: 0;
   -webkit-clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
           clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
+}
+
+.record-audio__volume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+}
+.record-audio__volume img {
+  max-width: 100%;
+  width: 32px;
+}
+.record-audio__volume .record-audio__volume-bar {
+  min-width: 55px;
 }
 
 @keyframes smoothPadAfter {
@@ -297,6 +313,10 @@ h6 {
     width: 85%;
   }
 }
+/*
+btn volume for smart phones 
+*need to make drop-out progress bar (in vertical)
+*/
 body {
   font-family: "Playfair Display";
   font-size: 1rem;
@@ -445,7 +465,6 @@ body {
   background: #3b3a3a;
   padding: 15px 0;
   line-height: 19px;
-  font-size: 14px;
   font-size: calc(16px + 2 * calc(100vw - (320px)) / 1120);
   margin-bottom: 40px;
 }
@@ -473,7 +492,6 @@ body {
   margin: 0 0 30px;
 }
 .footer__logo_box .footer__logo {
-  max-width: 200px;
   text-align: center;
   padding: 15px 5px;
 }
@@ -487,7 +505,6 @@ body {
   padding: 30px 0 60px;
   color: #fff;
   line-height: 30px;
-  font-size: 16px;
 }
 .footer__text span {
   padding: 0 10px;
@@ -641,3 +658,12 @@ body {
     }
 }*/
 /* special text for fixing all */
+/*//? ineresting thing for using in (maybe) the future
+.block {
+box-shadow: 0 -8px 4px 0 rgba(0, 0, 0, .25) inset;
+border-radious: 32px;
+padding: 15px;
+//^ using for create effects of volumetric tiles for some content
+}
+
+*/

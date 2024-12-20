@@ -1,6 +1,7 @@
 //todo додати  елмент before до main щоб розділити нашу сторінку на дві частинки перша запис друга прослуховування його
 //todo відповідно підібрати кольори і сам стиль менюшки + подумати над бкграундом для запису і всього застосунку
 //todo adaptive size of elements on page like voice icon and other
+@import "_mixin";
 $mainColor: #6a6e77;
 body {
     // enough pretty for this page on tha moment
@@ -32,21 +33,26 @@ body {
     margin-bottom: 15px;
     overflow: hidden;
     padding-top: 35px;
+    @include adaptive-value(padding-left, 10, 40, $minWidth, $maxWidth);
+    @include adaptive-value(padding-right, 10, 40, $minWidth, $maxWidth);
     &__record-btn {
         display: flex;
         position: relative;
         //filter: blur(1.5px);
         justify-content: center;
         align-items: center;
+
         width: 200px;
         height: 300px;
+        //@include adaptive-value(width, 150, 200, $minWidth, $maxWidth);
+        //@include adaptive-value(height, 225, 300, $minWidth, $maxWidth);
         background-color: #ff2222; // #ea6133   first variant(#ff2222)
         padding: 10px 15px;
         border-radius: 50% 25%;
         box-shadow:
-            20px -8px 40px #ff22221c,
-            -16px 16px 40px 5px #ff222239,
-            -1px -8px 40px #ff222241;
+            20px -8px 40px rgb(224 6 6 / 30%),
+            -16px 16px 40px 5px rgb(174 0 0 / 42%),
+            -1px -8px 40px rgba(255, 34, 34, 0.3449019608);
         margin-bottom: 55px;
         svg {
             position: relative;
@@ -107,12 +113,12 @@ body {
         border-radius: 25px;
     }
     &__record-audio {
-        width: 350px;
-        height: 100px;
+        // width: 350px;
+        // height: 100px;
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.517);
         box-shadow: 0 4px 45px rgb(0 0 0 / 28%);
-        padding: 30px;
+        padding: 30px 30px 10px 30px;
         padding-top: 25px;
         overflow: hidden;
         color: $mainColor;
@@ -124,6 +130,7 @@ body {
         width: 100%;
         position: relative;
     }
+
     &__seek-bar {
         -webkit-appearance: none;
         width: 100%;
@@ -153,7 +160,8 @@ body {
     &__current-time,
     &__duration-time,
     span {
-        font-size: 16px;
+        font-size: 18px;
+        line-height: 36px;
     }
 }
 .record-controls {
@@ -167,10 +175,15 @@ body {
         width: 40px;
         height: 40px;
         border-radius: 50%;
+        border: 2px solid #6a6e77;
         background: #d47f7f;
         border: none;
         cursor: pointer;
-        box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.4); //todo need find some good examplr with work with shadows
+        box-shadow:
+            0 0 20px 5px rgba(0, 0, 0, 0.124),
+            0 0 7px 5px rgba(0, 0, 0, 0.124),
+            0 0 20px 5px rgba(0, 0, 0, 0.124),
+            0 0 20px 8px rgba(0, 0, 0, 0.124); //todo need find some good examplr with work with shadows
         span {
             position: absolute;
             top: 50%;
@@ -197,6 +210,22 @@ body {
         transform: translate(-50%, -50%);
         border-radius: 0;
         clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
+    }
+}
+
+.record-audio__volume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
+    img {
+        max-width: 100%;
+        width: 32px;
+        //width: 32px;
+    }
+
+    .record-audio__volume-bar {
+        min-width: 55px;
     }
 }
 @keyframes smoothPadAfter {
@@ -236,3 +265,9 @@ body {
         width: 85%;
     }
 }
+
+//^ for next updates
+/*
+btn volume for smart phones 
+*need to make drop-out progress bar (in vertical)
+*/
