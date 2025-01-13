@@ -221,7 +221,7 @@ h6 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: auto;
+  cursor: pointer;
 }
 .record-controls__play-btn {
   position: relative;
@@ -242,7 +242,7 @@ h6 {
   height: 20px;
   border-radius: 2px;
   background: #d72222;
-  transition: 0.5s;
+  transition: 0.2s;
   transform: translateY(-50%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
@@ -317,6 +317,129 @@ h6 {
 btn volume for smart phones 
 *need to make drop-out progress bar (in vertical)
 */
+.main__rc-testcontainer {
+  padding-top: 55px;
+  padding-left: calc(10px + 30 * calc(100vw - (320px)) / 1120);
+  padding-right: calc(10px + 30 * calc(100vw - (320px)) / 1120);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* General styling for the custom audio player */
+.custom-audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8caca; /* Soft pink background */
+  border-radius: 20px; /* Rounded corners */
+  padding: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: Arial, sans-serif;
+  max-width: 65%;
+}
+
+/* Play/Pause button */
+.custom-audio__play-pause {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%; /* Makes it a circle */
+  background-color: #ff6161; /* Bright red button */
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Shadow for button */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.custom-audio__play-pause:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+/* Seek bar container */
+.custom-audio__seek-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Seek bar slider */
+.custom-audio__seek-bar {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; /* Remove default styles */
+  width: 100%;
+  height: 5px;
+  background-color: #d97373; /* Muted pink */
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.custom-audio__seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Round thumb */
+  background-color: #ff6161; /* Same as play button */
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add depth */
+}
+
+.custom-audio__seek-bar::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff6161;
+  cursor: pointer;
+}
+
+/* Volume control slider */
+.custom-audio__volume {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100px;
+  height: 5px;
+  background-color: #d97373; /* Same as seek bar */
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.custom-audio__volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff6161;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-audio__volume::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff6161;
+  cursor: pointer;
+}
+
+/* Time display */
+.custom-audio__time {
+  font-size: 14px;
+  color: #555; /* Muted gray text */
+  white-space: nowrap;
+}
+
 body {
   font-family: "Playfair Display";
   font-size: 1rem;

@@ -169,7 +169,8 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin: auto;
+    cursor: pointer;
+    //margin: auto;
     &__play-btn {
         position: relative;
         width: 40px;
@@ -192,7 +193,7 @@ body {
             height: 20px;
             border-radius: 2px;
             background: #d72222;
-            transition: 0.5s;
+            transition: 0.2s;
             transform: translateY(-50%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         }
